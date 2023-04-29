@@ -11,12 +11,6 @@ trait InstanceCreator
      */
     protected static $instance;
 
-
-    #[Pure] public static function create(...$arguments): static
-    {
-        return new static(...$arguments);
-    }
-
     public static function createSingleton(...$arguments): static
     {
         if (!isset(static::$instance)) {
@@ -24,5 +18,10 @@ trait InstanceCreator
         }
 
         return self::$instance;
+    }
+
+    #[Pure] public static function create(...$arguments): static
+    {
+        return new static(...$arguments);
     }
 }
